@@ -245,267 +245,351 @@
             </div>
         </div>
 
-        <!-- GCS Calculator Page -->
-        <div id="calculator-page" class="page">
-            <div class="page-header">
-                <h2>محاسبه GCS</h2>
-            </div>
-            
-            <div class="patient-selector">
-                <label for="selected-patient">انتخاب بیمار:</label>
-                <select id="selected-patient">
-                    <option value="">-- انتخاب بیمار --</option>
-                </select>
-                <div class="patient-quick-info" id="selected-patient-info">
-                    <!-- Patient quick info will appear here when selected -->
+<!-- GCS Calculator Page -->
+<div id="calculator-page" class="page">
+    <div class="page-header">
+        <h2>محاسبه GCS</h2>
+    </div>
+    
+    <div class="patient-selector">
+        <label for="selected-patient">انتخاب بیمار:</label>
+        <select id="selected-patient">
+            <option value="">-- انتخاب بیمار --</option>
+        </select>
+        <div class="patient-quick-info" id="selected-patient-info">
+            <!-- Patient quick info will appear here when selected -->
+        </div>
+    </div>
+
+    <div id="calculator-content">
+        <div class="gcs-calculator">
+            <!-- Eye Response Section -->
+            <div class="gcs-section">
+                <div class="section-header">
+                    <h3>پاسخ چشمی (E)</h3>
+                    <button class="help-btn" data-help="eye">
+                        <i class="fas fa-question-circle"></i>
+                        <span>راهنما</span>
+                    </button>
+                </div>
+                <div class="gcs-options image-options">
+                    <label class="image-option" data-score="4" data-component="eye">
+                        <input type="radio" name="eye-score" value="4">
+                        <div class="option-content">
+                            <div class="option-image">
+                                <img src="images/eye4.jpg" alt="چشم‌ها به صورت خودبه‌خودی باز هستند" onerror="this.onerror=null; this.src='https://via.placeholder.com/300x200/e3e7ff/2c4bbd?text=چشم‌ها+به+صورت+خودبه‌خودی'; this.classList.add('placeholder-img')">
+                            </div>
+                            <div class="option-label">
+                                <span class="score">4</span>
+                                <span class="desc">چشم‌ها به صورت خودبه‌خودی باز هستند</span>
+                            </div>
+                        </div>
+                    </label>
+                    <label class="image-option" data-score="3" data-component="eye">
+                        <input type="radio" name="eye-score" value="3">
+                        <div class="option-content">
+                            <div class="option-image">
+                                <img src="images/eye3.jpg" alt="چشم‌ها با دستور کلامی باز می‌شوند" onerror="this.onerror=null; this.src='https://via.placeholder.com/300x200/e3e7ff/2c4bbd?text=چشم‌ها+با+دستور+کلامی'; this.classList.add('placeholder-img')">
+                            </div>
+                            <div class="option-label">
+                                <span class="score">3</span>
+                                <span class="desc">چشم‌ها با دستور کلامی باز می‌شوند</span>
+                            </div>
+                        </div>
+                    </label>
+                    <label class="image-option" data-score="2" data-component="eye">
+                        <input type="radio" name="eye-score" value="2">
+                        <div class="option-content">
+                            <div class="option-image">
+                                <img src="images/eye2.jpg" alt="چشم‌ها در پاسخ به درد باز می‌شوند" onerror="this.onerror=null; this.src='https://via.placeholder.com/300x200/e3e7ff/2c4bbd?text=چشم‌ها+در+پاسخ+به+درد'; this.classList.add('placeholder-img')">
+                            </div>
+                            <div class="option-label">
+                                <span class="score">2</span>
+                                <span class="desc">چشم‌ها در پاسخ به درد باز می‌شوند</span>
+                            </div>
+                        </div>
+                    </label>
+                    <label class="image-option" data-score="1" data-component="eye">
+                        <input type="radio" name="eye-score" value="1">
+                        <div class="option-content">
+                            <div class="option-image">
+                                <img src="images/eye1.jpg" alt="چشم‌ها باز نمی‌شوند" onerror="this.onerror=null; this.src='https://via.placeholder.com/300x200/e3e7ff/2c4bbd?text=چشم‌ها+باز+نمی‌شوند'; this.classList.add('placeholder-img')">
+                            </div>
+                            <div class="option-label">
+                                <span class="score">1</span>
+                                <span class="desc">چشم‌ها باز نمی‌شوند</span>
+                            </div>
+                        </div>
+                    </label>
                 </div>
             </div>
 
-            <div id="calculator-content">
-                <div class="gcs-calculator">
-                    <!-- Eye Response Section -->
-                    <div class="gcs-section">
-                        <div class="section-header">
-                            <h3>پاسخ چشمی (E)</h3>
-                            <button class="help-btn" data-help="eye">
-                                <i class="fas fa-question-circle"></i>
-                                <span>راهنما</span>
-                            </button>
-                        </div>
-                        <div class="gcs-options gcs-radio-options">
-                            <label class="radio-option" data-score="4" data-component="eye">
-                                <input type="radio" name="eye-score" value="4">
-                                <div class="option-label">
-                                    <span class="score">4</span>
-                                    <span class="desc">چشم‌ها به صورت خودبه‌خودی باز هستند</span>
-                                </div>
-                            </label>
-                            <label class="radio-option" data-score="3" data-component="eye">
-                                <input type="radio" name="eye-score" value="3">
-                                <div class="option-label">
-                                    <span class="score">3</span>
-                                    <span class="desc">چشم‌ها با دستور کلامی باز می‌شوند</span>
-                                </div>
-                            </label>
-                            <label class="radio-option" data-score="2" data-component="eye">
-                                <input type="radio" name="eye-score" value="2">
-                                <div class="option-label">
-                                    <span class="score">2</span>
-                                    <span class="desc">چشم‌ها در پاسخ به درد باز می‌شوند</span>
-                                </div>
-                            </label>
-                            <label class="radio-option" data-score="1" data-component="eye">
-                                <input type="radio" name="eye-score" value="1">
-                                <div class="option-label">
-                                    <span class="score">1</span>
-                                    <span class="desc">چشم‌ها باز نمی‌شوند</span>
-                                </div>
-                            </label>
-                        </div>
-                    </div>
-
-                    <!-- Verbal Response Section -->
-                    <div class="gcs-section">
-                        <div class="section-header">
-                            <h3>پاسخ کلامی (V)</h3>
-                            <button class="help-btn" data-help="verbal">
-                                <i class="fas fa-question-circle"></i>
-                                <span>راهنما</span>
-                            </button>
-                        </div>
-                        <div class="gcs-options gcs-radio-options">
-                            <label class="radio-option" data-score="5" data-component="verbal">
-                                <input type="radio" name="verbal-score" value="5">
-                                <div class="option-label">
-                                    <span class="score">5</span>
-                                    <span class="desc">با آگاهی کامل، مکالمه طبیعی</span>
-                                </div>
-                            </label>
-                            <label class="radio-option" data-score="4" data-component="verbal">
-                                <input type="radio" name="verbal-score" value="4">
-                                <div class="option-label">
-                                    <span class="score">4</span>
-                                    <span class="desc">گیج، بدون آگاهی</span>
-                                </div>
-                            </label>
-                            <label class="radio-option" data-score="3" data-component="verbal">
-                                <input type="radio" name="verbal-score" value="3">
-                                <div class="option-label">
-                                    <span class="score">3</span>
-                                    <span class="desc">کلمات نامناسب</span>
-                                </div>
-                            </label>
-                            <label class="radio-option" data-score="2" data-component="verbal">
-                                <input type="radio" name="verbal-score" value="2">
-                                <div class="option-label">
-                                    <span class="score">2</span>
-                                    <span class="desc">صداهای نامفهوم</span>
-                                </div>
-                            </label>
-                            <label class="radio-option" data-score="1" data-component="verbal">
-                                <input type="radio" name="verbal-score" value="1">
-                                <div class="option-label">
-                                    <span class="score">1</span>
-                                    <span class="desc">بدون پاسخ کلامی</span>
-                                </div>
-                            </label>
-                        </div>
-                    </div>
-
-                    <!-- Motor Response Section -->
-                    <div class="gcs-section">
-                        <div class="section-header">
-                            <h3>پاسخ حرکتی (M)</h3>
-                            <button class="help-btn" data-help="motor">
-                                <i class="fas fa-question-circle"></i>
-                                <span>راهنما</span>
-                            </button>
-                        </div>
-                        <div class="gcs-options gcs-radio-options">
-                            <label class="radio-option" data-score="6" data-component="motor">
-                                <input type="radio" name="motor-score" value="6">
-                                <div class="option-label">
-                                    <span class="score">6</span>
-                                    <span class="desc">از دستورات اطاعت می‌کند</span>
-                                </div>
-                            </label>
-                            <label class="radio-option" data-score="5" data-component="motor">
-                                <input type="radio" name="motor-score" value="5">
-                                <div class="option-label">
-                                    <span class="score">5</span>
-                                    <span class="desc">درد را موضعی می‌کند</span>
-                                </div>
-                            </label>
-                            <label class="radio-option" data-score="4" data-component="motor">
-                                <input type="radio" name="motor-score" value="4">
-                                <div class="option-label">
-                                    <span class="score">4</span>
-                                    <span class="desc">از درد دوری می‌کند</span>
-                                </div>
-                            </label>
-                            <label class="radio-option" data-score="3" data-component="motor">
-                                <input type="radio" name="motor-score" value="3">
-                                <div class="option-label">
-                                    <span class="score">3</span>
-                                    <span class="desc">خم شدن غیر طبیعی</span>
-                                </div>
-                            </label>
-                            <label class="radio-option" data-score="2" data-component="motor">
-                                <input type="radio" name="motor-score" value="2">
-                                <div class="option-label">
-                                    <span class="score">2</span>
-                                    <span class="desc">باز شدن در پاسخ به درد</span>
-                                </div>
-                            </label>
-                            <label class="radio-option" data-score="1" data-component="motor">
-                                <input type="radio" name="motor-score" value="1">
-                                <div class="option-label">
-                                    <span class="score">1</span>
-                                    <span class="desc">بدون پاسخ حرکتی</span>
-                                </div>
-                            </label>
-                        </div>
-                    </div>
-
-                    <!-- Notes Section -->
-                    <div class="gcs-section notes-section">
-                        <h3>یادداشت‌های ارزیابی</h3>
-                        <textarea id="gcs-notes" rows="3" placeholder="هر گونه مشاهدات بالینی یا یادداشت در مورد این ارزیابی را وارد کنید..."></textarea>
-                    </div>
-
-                    <!-- GCS Results -->
-                    <div class="gcs-results">
-                        <h3>امتیاز GCS</h3>
-                        <div class="score-display">
-                            <div class="total-score">
-                                <span id="total-score">--</span>
-                                <span>امتیاز</span>
+            <!-- Verbal Response Section -->
+            <div class="gcs-section">
+                <div class="section-header">
+                    <h3>پاسخ کلامی (V)</h3>
+                    <button class="help-btn" data-help="verbal">
+                        <i class="fas fa-question-circle"></i>
+                        <span>راهنما</span>
+                    </button>
+                </div>
+                <div class="gcs-options image-options">
+                    <label class="image-option" data-score="5" data-component="verbal">
+                        <input type="radio" name="verbal-score" value="5">
+                        <div class="option-content">
+                            <div class="option-image">
+                                <img src="images/verbal5.jpg" alt="با آگاهی کامل، مکالمه طبیعی" onerror="this.onerror=null; this.src='https://via.placeholder.com/300x200/e3e7ff/2c4bbd?text=با+آگاهی+کامل،+مکالمه+طبیعی'; this.classList.add('placeholder-img')">
                             </div>
-                            <div class="component-scores">
-                                <span>E: </span><span id="eye-score">-</span>
-                                <span>V: </span><span id="verbal-score">-</span>
-                                <span>M: </span><span id="motor-score">-</span>
-                            </div>
-                            <div class="interpretation">
-                                <span>تفسیر: </span>
-                                <span id="score-interpretation">--</span>
+                            <div class="option-label">
+                                <span class="score">5</span>
+                                <span class="desc">با آگاهی کامل، مکالمه طبیعی</span>
                             </div>
                         </div>
-                        <div class="score-actions">
-                            <button id="save-gcs-btn" class="btn primary" disabled>
-                                <i class="fas fa-save"></i>
-                                <span>ذخیره ارزیابی</span>
-                            </button>
-                            <button id="reset-gcs-btn" class="btn secondary">
-                                <i class="fas fa-undo"></i>
-                                <span>بازنشانی</span>
-                            </button>
-                            <button id="back-to-patient-btn" class="btn tertiary">
-                                <i class="fas fa-arrow-left"></i>
-                                <span>بازگشت به بیمار</span>
-                            </button>
+                    </label>
+                    <label class="image-option" data-score="4" data-component="verbal">
+                        <input type="radio" name="verbal-score" value="4">
+                        <div class="option-content">
+                            <div class="option-image">
+                                <img src="images/verbal4.jpg" alt="گیج، بدون آگاهی" onerror="this.onerror=null; this.src='https://via.placeholder.com/300x200/e3e7ff/2c4bbd?text=گیج،+بدون+آگاهی'; this.classList.add('placeholder-img')">
+                            </div>
+                            <div class="option-label">
+                                <span class="score">4</span>
+                                <span class="desc">گیج، بدون آگاهی</span>
+                            </div>
                         </div>
-                    </div>
+                    </label>
+                    <label class="image-option" data-score="3" data-component="verbal">
+                        <input type="radio" name="verbal-score" value="3">
+                        <div class="option-content">
+                            <div class="option-image">
+                                <img src="images/verbal3.jpg" alt="کلمات نامناسب" onerror="this.onerror=null; this.src='https://via.placeholder.com/300x200/e3e7ff/2c4bbd?text=کلمات+نامناسب'; this.classList.add('placeholder-img')">
+                            </div>
+                            <div class="option-label">
+                                <span class="score">3</span>
+                                <span class="desc">کلمات نامناسب</span>
+                            </div>
+                        </div>
+                    </label>
+                    <label class="image-option" data-score="2" data-component="verbal">
+                        <input type="radio" name="verbal-score" value="2">
+                        <div class="option-content">
+                            <div class="option-image">
+                                <img src="images/verbal2.jpg" alt="صداهای نامفهوم" onerror="this.onerror=null; this.src='https://via.placeholder.com/300x200/e3e7ff/2c4bbd?text=صداهای+نامفهوم'; this.classList.add('placeholder-img')">
+                            </div>
+                            <div class="option-label">
+                                <span class="score">2</span>
+                                <span class="desc">صداهای نامفهوم</span>
+                            </div>
+                        </div>
+                    </label>
+                    <label class="image-option" data-score="1" data-component="verbal">
+                        <input type="radio" name="verbal-score" value="1">
+                        <div class="option-content">
+                            <div class="option-image">
+                                <img src="images/verbal1.jpg" alt="بدون پاسخ کلامی" onerror="this.onerror=null; this.src='https://via.placeholder.com/300x200/e3e7ff/2c4bbd?text=بدون+پاسخ+کلامی'; this.classList.add('placeholder-img')">
+                            </div>
+                            <div class="option-label">
+                                <span class="score">1</span>
+                                <span class="desc">بدون پاسخ کلامی</span>
+                            </div>
+                        </div>
+                    </label>
                 </div>
             </div>
-            
-            <!-- Help Modal -->
-            <div id="help-modal" class="modal">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h2>راهنمای ارزیابی GCS</h2>
-                        <span class="close">&times;</span>
-                    </div>
-                    
-                    <div class="help-content">
-                        <div id="eye-help" class="help-section">
-                            <div class="help-text">
-                                <h3>راهنمای ارزیابی پاسخ چشمی</h3>
-                                <ul>
-                                    <li><strong>4:</strong> چشم‌ها بدون تحریک باز می‌شوند</li>
-                                    <li><strong>3:</strong> چشم‌ها در پاسخ به دستور کلامی باز می‌شوند</li>
-                                    <li><strong>2:</strong> چشم‌ها فقط با تحریک دردناک باز می‌شوند</li>
-                                    <li><strong>1:</strong> چشم‌ها حتی با تحریک دردناک باز نمی‌شوند</li>
-                                </ul>
+
+            <!-- Motor Response Section -->
+            <div class="gcs-section">
+                <div class="section-header">
+                    <h3>پاسخ حرکتی (M)</h3>
+                    <button class="help-btn" data-help="motor">
+                        <i class="fas fa-question-circle"></i>
+                        <span>راهنما</span>
+                    </button>
+                </div>
+                <div class="gcs-options image-options">
+                    <label class="image-option" data-score="6" data-component="motor">
+                        <input type="radio" name="motor-score" value="6">
+                        <div class="option-content">
+                            <div class="option-image">
+                                <img src="images/motor6.jpg" alt="از دستورات اطاعت می‌کند" onerror="this.onerror=null; this.src='https://via.placeholder.com/300x200/e3e7ff/2c4bbd?text=از+دستورات+اطاعت+می‌کند'; this.classList.add('placeholder-img')">
+                            </div>
+                            <div class="option-label">
+                                <span class="score">6</span>
+                                <span class="desc">از دستورات اطاعت می‌کند</span>
                             </div>
                         </div>
-                        
-                        <div id="verbal-help" class="help-section">
-                            <div class="help-text">
-                                <h3>راهنمای ارزیابی پاسخ کلامی</h3>
-                                <ul>
-                                    <li><strong>5:</strong> شخص، مکان، زمان و دلیل بستری شدن را می‌داند</li>
-                                    <li><strong>4:</strong> گیج است اما می‌تواند در مکالمه شرکت کند</li>
-                                    <li><strong>3:</strong> کلمات تصادفی یا نامرتبط، بدون مکالمه پایدار</li>
-                                    <li><strong>2:</strong> ناله یا غرغر، بدون کلمات قابل تشخیص</li>
-                                    <li><strong>1:</strong> بدون پاسخ کلامی، حتی به محرک‌های دردناک</li>
-                                </ul>
+                    </label>
+                    <label class="image-option" data-score="5" data-component="motor">
+                        <input type="radio" name="motor-score" value="5">
+                        <div class="option-content">
+                            <div class="option-image">
+                                <img src="images/motor5.jpg" alt="درد را موضعی می‌کند" onerror="this.onerror=null; this.src='https://via.placeholder.com/300x200/e3e7ff/2c4bbd?text=درد+را+موضعی+می‌کند'; this.classList.add('placeholder-img')">
+                            </div>
+                            <div class="option-label">
+                                <span class="score">5</span>
+                                <span class="desc">درد را موضعی می‌کند</span>
                             </div>
                         </div>
-                        
-                        <div id="motor-help" class="help-section">
-                            <div class="help-text">
-                                <h3>راهنمای ارزیابی پاسخ حرکتی</h3>
-                                <ul>
-                                    <li><strong>6:</strong> دستورات ساده را به درستی دنبال می‌کند</li>
-                                    <li><strong>5:</strong> اندام را به سمت منبع درد حرکت می‌دهد</li>
-                                    <li><strong>4:</strong> اندام را از محرک دردناک دور می‌کند</li>
-                                    <li><strong>3:</strong> حالت دکورتیکه (خم شدن بازوها، دراز شدن پاها)</li>
-                                    <li><strong>2:</strong> حالت دسربره (دراز شدن بازوها و پاها)</li>
-                                    <li><strong>1:</strong> بدون پاسخ حرکتی به درد</li>
-                                </ul>
+                    </label>
+                    <label class="image-option" data-score="4" data-component="motor">
+                        <input type="radio" name="motor-score" value="4">
+                        <div class="option-content">
+                            <div class="option-image">
+                                <img src="images/motor4.jpg" alt="از درد دوری می‌کند" onerror="this.onerror=null; this.src='https://via.placeholder.com/300x200/e3e7ff/2c4bbd?text=از+درد+دوری+می‌کند'; this.classList.add('placeholder-img')">
+                            </div>
+                            <div class="option-label">
+                                <span class="score">4</span>
+                                <span class="desc">از درد دوری می‌کند</span>
                             </div>
                         </div>
+                    </label>
+                    <label class="image-option" data-score="3" data-component="motor">
+                        <input type="radio" name="motor-score" value="3">
+                        <div class="option-content">
+                            <div class="option-image">
+                                <img src="images/motor3.jpg" alt="خم شدن غیر طبیعی" onerror="this.onerror=null; this.src='https://via.placeholder.com/300x200/e3e7ff/2c4bbd?text=خم+شدن+غیر+طبیعی'; this.classList.add('placeholder-img')">
+                            </div>
+                            <div class="option-label">
+                                <span class="score">3</span>
+                                <span class="desc">خم شدن غیر طبیعی</span>
+                            </div>
+                        </div>
+                    </label>
+                    <label class="image-option" data-score="2" data-component="motor">
+                        <input type="radio" name="motor-score" value="2">
+                        <div class="option-content">
+                            <div class="option-image">
+                                <img src="images/motor2.jpg" alt="باز شدن در پاسخ به درد" onerror="this.onerror=null; this.src='https://via.placeholder.com/300x200/e3e7ff/2c4bbd?text=باز+شدن+در+پاسخ+به+درد'; this.classList.add('placeholder-img')">
+                            </div>
+                            <div class="option-label">
+                                <span class="score">2</span>
+                                <span class="desc">باز شدن در پاسخ به درد</span>
+                            </div>
+                        </div>
+                    </label>
+                    <label class="image-option" data-score="1" data-component="motor">
+                        <input type="radio" name="motor-score" value="1">
+                        <div class="option-content">
+                            <div class="option-image">
+                                <img src="images/motor1.jpg" alt="بدون پاسخ حرکتی" onerror="this.onerror=null; this.src='https://via.placeholder.com/300x200/e3e7ff/2c4bbd?text=بدون+پاسخ+حرکتی'; this.classList.add('placeholder-img')">
+                            </div>
+                            <div class="option-label">
+                                <span class="score">1</span>
+                                <span class="desc">بدون پاسخ حرکتی</span>
+                            </div>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Notes Section -->
+            <div class="gcs-section notes-section">
+                <h3>یادداشت‌های ارزیابی</h3>
+                <textarea id="gcs-notes" rows="3" placeholder="هر گونه مشاهدات بالینی یا یادداشت در مورد این ارزیابی را وارد کنید..."></textarea>
+            </div>
+
+            <!-- GCS Results -->
+            <div class="gcs-results">
+                <h3>امتیاز GCS</h3>
+                <div class="score-display">
+                    <div class="total-score">
+                        <span id="total-score">--</span>
+                        <span>امتیاز</span>
                     </div>
-                    
-                    <div class="modal-footer">
-                        <button id="close-help-btn" class="btn secondary">
-                            <span>بستن</span>
-                        </button>
+                    <div class="component-scores">
+                        <span>E: </span><span id="eye-score">-</span>
+                        <span>V: </span><span id="verbal-score">-</span>
+                        <span>M: </span><span id="motor-score">-</span>
                     </div>
+                    <div class="interpretation">
+                        <span>تفسیر: </span>
+                        <span id="score-interpretation">--</span>
+                    </div>
+                </div>
+                <div class="score-actions">
+                    <button id="save-gcs-btn" class="btn primary" disabled>
+                        <i class="fas fa-save"></i>
+                        <span>ذخیره ارزیابی</span>
+                    </button>
+                    <button id="reset-gcs-btn" class="btn secondary">
+                        <i class="fas fa-undo"></i>
+                        <span>بازنشانی</span>
+                    </button>
+                    <button id="back-to-patient-btn" class="btn tertiary">
+                        <i class="fas fa-arrow-left"></i>
+                        <span>بازگشت به بیمار</span>
+                    </button>
                 </div>
             </div>
         </div>
+    </div>
+    
+    <!-- Help Modal -->
+    <div id="help-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>راهنمای ارزیابی GCS</h2>
+                <span class="close">&times;</span>
+            </div>
+            
+            <div class="help-content">
+                <div id="eye-help" class="help-section">
+                    <div class="help-image">
+                        <img src="images/eyehelp.jpg" alt="راهنمای ارزیابی پاسخ چشمی" onerror="this.onerror=null; this.src='https://via.placeholder.com/600x300/e3e7ff/2c4bbd?text=راهنمای+ارزیابی+پاسخ+چشمی'; this.classList.add('placeholder-img')">
+                    </div>
+                    <div class="help-text">
+                        <h3>راهنمای ارزیابی پاسخ چشمی</h3>
+                        <ul>
+                            <li><strong>4:</strong> چشم‌ها بدون تحریک باز می‌شوند</li>
+                            <li><strong>3:</strong> چشم‌ها در پاسخ به دستور کلامی باز می‌شوند</li>
+                            <li><strong>2:</strong> چشم‌ها فقط با تحریک دردناک باز می‌شوند</li>
+                            <li><strong>1:</strong> چشم‌ها حتی با تحریک دردناک باز نمی‌شوند</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div id="verbal-help" class="help-section">
+                    <div class="help-image">
+                        <img src="images/verbalhelp.jpg" alt="راهنمای ارزیابی پاسخ کلامی" onerror="this.onerror=null; this.src='https://via.placeholder.com/600x300/e3e7ff/2c4bbd?text=راهنمای+ارزیابی+پاسخ+کلامی'; this.classList.add('placeholder-img')">
+                    </div>
+                    <div class="help-text">
+                        <h3>راهنمای ارزیابی پاسخ کلامی</h3>
+                        <ul>
+                            <li><strong>5:</strong> شخص، مکان، زمان و دلیل بستری شدن را می‌داند</li>
+                            <li><strong>4:</strong> گیج است اما می‌تواند در مکالمه شرکت کند</li>
+                            <li><strong>3:</strong> کلمات تصادفی یا نامرتبط، بدون مکالمه پایدار</li>
+                            <li><strong>2:</strong> ناله یا غرغر، بدون کلمات قابل تشخیص</li>
+                            <li><strong>1:</strong> بدون پاسخ کلامی، حتی به محرک‌های دردناک</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div id="motor-help" class="help-section">
+                    <div class="help-image">
+                        <img src="images/motorhelp.jpg" alt="راهنمای ارزیابی پاسخ حرکتی" onerror="this.onerror=null; this.src='https://via.placeholder.com/600x300/e3e7ff/2c4bbd?text=راهنمای+ارزیابی+پاسخ+حرکتی'; this.classList.add('placeholder-img')">
+                    </div>
+                    <div class="help-text">
+                        <h3>راهنمای ارزیابی پاسخ حرکتی</h3>
+                        <ul>
+                            <li><strong>6:</strong> دستورات ساده را به درستی دنبال می‌کند</li>
+                            <li><strong>5:</strong> اندام را به سمت منبع درد حرکت می‌دهد</li>
+                            <li><strong>4:</strong> اندام را از محرک دردناک دور می‌کند</li>
+                            <li><strong>3:</strong> حالت دکورتیکه (خم شدن بازوها، دراز شدن پاها)</li>
+                            <li><strong>2:</strong> حالت دسربره (دراز شدن بازوها و پاها)</li>
+                            <li><strong>1:</strong> بدون پاسخ حرکتی به درد</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="modal-footer">
+                <button id="close-help-btn" class="btn secondary">
+                    <span>بستن</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
 
         <!-- Reports Page -->
         <div id="history-page" class="page">
