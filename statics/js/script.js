@@ -238,7 +238,71 @@ function initCalculatorPage() {
     backToPatientBtn?.addEventListener('click', function() {
         navigateTo('patients');
     });
+    initImageGcsOptions();
+    initHelpModal();
 }
+
+// Initialize GCS image options
+function initImageGcsOptions() {
+    const imageOptions = document.querySelectorAll('.image-option');
+
+    imageOptions.forEach(option => {
+        option.addEventListener('click', function () {
+            const component = this.getAttribute('data-component');
+            const score = this.getAttribute('data-score');
+
+            const radio = this.querySelector('input[type="radio"]');
+            radio.checked = true;
+
+            document.querySelectorAll(`.image-option[data-component="${component}"]`).forEach(opt => {
+                opt.classList.remove('selected');
+            });
+
+            this.classList.add('selected');
+            updateComponentScore(component, score);
+            calculateTotalScore();
+        });
+    });
+
+    document.querySelectorAll('.option-image img, .help-image img').forEach(img => {
+        img.addEventListener('error', function () {
+            console.warn(`Failed to load image: ${this.src}`);
+        });
+    });
+}
+
+function updateComponentScore(component, score) {
+    const scoreElement = document.getElementById(`${component}-score`);
+    if (scoreElement) {
+        scoreElement.textContent = score;
+    }
+}
+
+function initHelpModal() {
+    const helpButtons = document.querySelectorAll('.help-btn');
+
+    helpButtons.forEach(btn => {
+        btn.addEventListener('click', function () {
+            const helpType = this.getAttribute('data-help');
+            document.querySelectorAll('.help-section').forEach(section => {
+                section.style.display = 'none';
+            });
+
+            const helpSection = document.getElementById(`${helpType}-help`);
+            if (helpSection) helpSection.style.display = 'block';
+
+            document.getElementById('help-modal').style.display = 'block';
+        });
+    });
+
+    const closeHelpBtn = document.getElementById('close-help-btn');
+    if (closeHelpBtn) {
+        closeHelpBtn.addEventListener('click', function () {
+            document.getElementById('help-modal').style.display = 'none';
+        });
+    }
+}
+
 
 // History Page
 function initHistoryPage() {
@@ -735,25 +799,16 @@ function loadCalculator() {
 }
 
 // Calculate total GCS score
+
 function calculateTotalScore() {
     const eyeScore = getSelectedRadioValue('eye-score');
     const verbalScore = getSelectedRadioValue('verbal-score');
     const motorScore = getSelectedRadioValue('motor-score');
-    
-    // Update component displays
-    document.getElementById('eye-score').textContent = eyeScore || '-';
-    document.getElementById('verbal-score').textContent = verbalScore || '-';
-    document.getElementById('motor-score').textContent = motorScore || '-';
-    
-    // Calculate total if all components are selected
+
     if (eyeScore && verbalScore && motorScore) {
         const totalScore = parseInt(eyeScore) + parseInt(verbalScore) + parseInt(motorScore);
         document.getElementById('total-score').textContent = totalScore;
-        
-        // Update interpretation
         updateInterpretation(totalScore);
-        
-        // Enable save button
         document.getElementById('save-gcs-btn').disabled = false;
     } else {
         document.getElementById('total-score').textContent = '--';
@@ -761,6 +816,7 @@ function calculateTotalScore() {
         document.getElementById('save-gcs-btn').disabled = true;
     }
 }
+
 
 // Get selected radio value
 function getSelectedRadioValue(name) {
@@ -835,48 +891,27 @@ async function saveGcsScore() {
 }
 
 // Reset GCS calculator
+
 function resetGcsCalculator() {
-    // Uncheck all radio buttons
-    document.querySelectorAll('input[type="radio"]').forEach(input => {
-        input.checked = false;
+    document.querySelectorAll('input[type="radio"]').forEach(input => input.checked = false);
+    document.querySelectorAll('.image-option').forEach(option => option.classList.remove('selected'));
+
+    const scoreElements = ['eye-score', 'verbal-score', 'motor-score'];
+    scoreElements.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.textContent = '-';
     });
-    
-    // Reset component radio option highlighting
-    document.querySelectorAll('.radio-option').forEach(option => {
-        option.classList.remove('selected');
-    });
-    
-    // Clear notes
-    if (document.getElementById('gcs-notes')) {
-        document.getElementById('gcs-notes').value = '';
-    }
-    
-    // Reset displays
-    if (document.getElementById('eye-score')) {
-        document.getElementById('eye-score').textContent = '-';
-    }
-    
-    if (document.getElementById('verbal-score')) {
-        document.getElementById('verbal-score').textContent = '-';
-    }
-    
-    if (document.getElementById('motor-score')) {
-        document.getElementById('motor-score').textContent = '-';
-    }
-    
-    if (document.getElementById('total-score')) {
-        document.getElementById('total-score').textContent = '--';
-    }
-    
-    if (document.getElementById('score-interpretation')) {
-        document.getElementById('score-interpretation').textContent = '--';
-    }
-    
-    // Disable save button
-    if (document.getElementById('save-gcs-btn')) {
-        document.getElementById('save-gcs-btn').disabled = true;
-    }
+
+    document.getElementById('total-score').textContent = '--';
+    document.getElementById('score-interpretation').textContent = '--';
+
+    const notesField = document.getElementById('gcs-notes');
+    if (notesField) notesField.value = '';
+
+    const saveBtn = document.getElementById('save-gcs-btn');
+    if (saveBtn) saveBtn.disabled = true;
 }
+
 
 // Generate reports
 function generateReport() {
@@ -990,165 +1025,4 @@ function getLatestGcsScore(patientId) {
     
     // Return latest score
     return patientScores[0];
-}
-
-
-// Add this to your initCalculatorPage function in script.js
-
-// Initialize GCS image options
-function initImageGcsOptions() {
-    // Get all image options
-    const imageOptions = document.querySelectorAll('.image-option');
-    
-    // Add click event to each option
-    imageOptions.forEach(option => {
-        option.addEventListener('click', function() {
-            const component = this.getAttribute('data-component');
-            const score = this.getAttribute('data-score');
-            
-            // Find the radio input within this option
-            const radio = this.querySelector('input[type="radio"]');
-            radio.checked = true;
-            
-            // Remove selected class from all options in the same component
-            document.querySelectorAll(`.image-option[data-component="${component}"]`).forEach(opt => {
-                opt.classList.remove('selected');
-            });
-            
-            // Add selected class to this option
-            this.classList.add('selected');
-            
-            // Update the score
-            updateComponentScore(component, score);
-            
-            // Calculate total
-            calculateTotalScore();
-        });
-    });
-    
-    // Handle image loading errors
-    document.querySelectorAll('.option-image img, .help-image img').forEach(img => {
-        img.addEventListener('error', function() {
-            // This will be handled by the onerror attribute already set in HTML,
-            // but we can add additional error handling if needed
-            console.warn(`Failed to load image: ${this.src}`);
-        });
-    });
-}
-
-// Update component score
-function updateComponentScore(component, score) {
-    const scoreElement = document.getElementById(`${component}-score`);
-    if (scoreElement) {
-        scoreElement.textContent = score;
-    }
-}
-
-// Call the init function
-document.addEventListener('DOMContentLoaded', function() {
-    // Other initialization code...
-    
-    // Initialize GCS image options
-    initImageGcsOptions();
-});
-
-// Update the calculateTotalScore function to work with the image options
-function calculateTotalScore() {
-    const eyeScore = getSelectedRadioValue('eye-score');
-    const verbalScore = getSelectedRadioValue('verbal-score');
-    const motorScore = getSelectedRadioValue('motor-score');
-    
-    // Calculate total if all components are selected
-    if (eyeScore && verbalScore && motorScore) {
-        const totalScore = parseInt(eyeScore) + parseInt(verbalScore) + parseInt(motorScore);
-        document.getElementById('total-score').textContent = totalScore;
-        
-        // Update interpretation
-        updateInterpretation(totalScore);
-        
-        // Enable save button
-        document.getElementById('save-gcs-btn').disabled = false;
-    } else {
-        // If not all components are selected, show dashes
-        document.getElementById('total-score').textContent = '--';
-        document.getElementById('score-interpretation').textContent = '--';
-        document.getElementById('save-gcs-btn').disabled = true;
-    }
-}
-
-// Reset GCS calculator (update to work with image options)
-function resetGcsCalculator() {
-    // Uncheck all radio buttons
-    document.querySelectorAll('input[type="radio"]').forEach(input => {
-        input.checked = false;
-    });
-    
-    // Remove selected class from all image options
-    document.querySelectorAll('.image-option').forEach(option => {
-        option.classList.remove('selected');
-    });
-    
-    // Clear notes
-    if (document.getElementById('gcs-notes')) {
-        document.getElementById('gcs-notes').value = '';
-    }
-    
-    // Reset displays
-    if (document.getElementById('eye-score')) {
-        document.getElementById('eye-score').textContent = '-';
-    }
-    
-    if (document.getElementById('verbal-score')) {
-        document.getElementById('verbal-score').textContent = '-';
-    }
-    
-    if (document.getElementById('motor-score')) {
-        document.getElementById('motor-score').textContent = '-';
-    }
-    
-    if (document.getElementById('total-score')) {
-        document.getElementById('total-score').textContent = '--';
-    }
-    
-    if (document.getElementById('score-interpretation')) {
-        document.getElementById('score-interpretation').textContent = '--';
-    }
-    
-    // Disable save button
-    if (document.getElementById('save-gcs-btn')) {
-        document.getElementById('save-gcs-btn').disabled = true;
-    }
-}
-
-// Initialize help modal
-function initHelpModal() {
-    const helpButtons = document.querySelectorAll('.help-btn');
-    
-    helpButtons.forEach(btn => {
-        btn.addEventListener('click', function() {
-            const helpType = this.getAttribute('data-help');
-            
-            // Hide all help sections
-            document.querySelectorAll('.help-section').forEach(section => {
-                section.style.display = 'none';
-            });
-            
-            // Show the selected help section
-            const helpSection = document.getElementById(`${helpType}-help`);
-            if (helpSection) {
-                helpSection.style.display = 'block';
-            }
-            
-            // Show the modal
-            document.getElementById('help-modal').style.display = 'block';
-        });
-    });
-    
-    // Close button for help modal
-    const closeHelpBtn = document.getElementById('close-help-btn');
-    if (closeHelpBtn) {
-        closeHelpBtn.addEventListener('click', function() {
-            document.getElementById('help-modal').style.display = 'none';
-        });
-    }
 }
