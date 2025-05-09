@@ -1,143 +1,1242 @@
-<!-- Add these sections after your home-page div -->
-
-<!-- Patients Page -->
-<div id="patients-page" class="page">
-    <div class="page-header">
-        <h2 class="en">Patient Management</h2>
-        <h2 class="fa">مدیریت بیمار</h2>
-        <button id="add-patient-btn" class="btn primary">
-            <i class="fas fa-plus"></i>
-            <span class="en">Add New Patient</span>
-            <span class="fa">افزودن بیمار جدید</span>
-        </button>
-    </div>
-    
-    <div class="search-box">
-        <input type="text" id="patient-search" placeholder="Search patients...">
-        <i class="fas fa-search"></i>
-    </div>
-
-    <div id="patients-list" class="patients-grid">
-        <div class="no-patients-message">
-            <p class="en">No patients found. Add a new patient to get started.</p>
-            <p class="fa">هیچ بیماری یافت نشد. برای شروع یک بیمار جدید اضافه کنید.</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital GCS Electronic Report</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="lang-en">
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <i class="fas fa-hospital-user"></i>
+                <h1>Hospital GCS Electronic Report</h1>
+            </div>
+            <div class="lang-toggle">
+                <button id="en-toggle" class="active">English</button>
+                <button id="fa-toggle">فارسی</button>
+            </div>
         </div>
-    </div>
-</div>
 
-<!-- GCS Calculator Page -->
-<div id="calculator-page" class="page">
-    <div class="page-header">
-        <h2 class="en">GCS Calculator</h2>
-        <h2 class="fa">محاسبه GCS</h2>
-    </div>
-    
-    <div class="patient-selector">
-        <label class="en" for="selected-patient">Select Patient:</label>
-        <label class="fa" for="selected-patient">انتخاب بیمار:</label>
-        <select id="selected-patient">
-            <option value="" class="en">-- Select a Patient --</option>
-            <option value="" class="fa">-- انتخاب بیمار --</option>
-        </select>
-    </div>
-
-    <div id="calculator-content" class="calculator-disabled">
-        <div class="select-patient-message">
-            <p class="en">Please select a patient to calculate GCS score.</p>
-            <p class="fa">لطفا یک بیمار را برای محاسبه امتیاز GCS انتخاب کنید.</p>
+        <div class="navigation">
+            <button class="nav-btn active" data-page="home">
+                <i class="fas fa-home"></i>
+                <span class="en">Dashboard</span>
+                <span class="fa">داشبورد</span>
+            </button>
+            <button class="nav-btn" data-page="patients">
+                <i class="fas fa-user-injured"></i>
+                <span class="en">Patients</span>
+                <span class="fa">بیماران</span>
+            </button>
+            <button class="nav-btn" data-page="calculator">
+                <i class="fas fa-calculator"></i>
+                <span class="en">GCS Calculator</span>
+                <span class="fa">محاسبه GCS</span>
+            </button>
+            <button class="nav-btn" data-page="history">
+                <i class="fas fa-chart-line"></i>
+                <span class="en">Reports</span>
+                <span class="fa">گزارش‌ها</span>
+            </button>
+            <button class="nav-btn" data-page="guide">
+                <i class="fas fa-question-circle"></i>
+                <span class="en">Help</span>
+                <span class="fa">راهنما</span>
+            </button>
         </div>
-    </div>
-</div>
 
-<!-- Patient History Page -->
-<div id="history-page" class="page">
-    <div class="page-header">
-        <h2 class="en">Patient GCS History</h2>
-        <h2 class="fa">تاریخچه GCS بیمار</h2>
-    </div>
-    
-    <div class="patient-selector">
-        <label class="en" for="history-patient">Select Patient:</label>
-        <label class="fa" for="history-patient">انتخاب بیمار:</label>
-        <select id="history-patient">
-            <option value="" class="en">-- Select a Patient --</option>
-            <option value="" class="fa">-- انتخاب بیمار --</option>
-        </select>
-    </div>
-
-    <div id="history-content" class="history-disabled">
-        <div class="select-patient-message">
-            <p class="en">Please select a patient to view GCS history.</p>
-            <p class="fa">لطفا یک بیمار را برای مشاهده تاریخچه GCS انتخاب کنید.</p>
-        </div>
-    </div>
-</div>
-
-<!-- Guide Page -->
-<div id="guide-page" class="page">
-    <div class="page-header">
-        <h2 class="en">GCS Guide</h2>
-        <h2 class="fa">راهنمای GCS</h2>
-    </div>
-    
-    <div class="guide-content">
-        <div class="guide-section">
-            <h3 class="en">What is the Glasgow Coma Scale?</h3>
-            <h3 class="fa">مقیاس کمای گلاسکو چیست؟</h3>
-            <p class="en">The Glasgow Coma Scale (GCS) is a neurological scale that aims to provide a reliable and objective way of recording the state of a person's consciousness. It is used to assess and record the level of consciousness in a person following a traumatic brain injury.</p>
-            <p class="fa">مقیاس کمای گلاسکو (GCS) یک مقیاس عصبی است که هدف آن ارائه روشی قابل اعتماد و عینی برای ثبت وضعیت هوشیاری یک فرد است. از آن برای ارزیابی و ثبت سطح هوشیاری در فرد پس از آسیب مغزی استفاده می‌شود.</p>
-        </div>
-        
-        <div class="guide-section">
-            <h3 class="en">GCS Components</h3>
-            <h3 class="fa">اجزای GCS</h3>
-            <div class="gcs-components-info">
-                <div class="component-info">
-                    <h4 class="en">Eye Response (E)</h4>
-                    <h4 class="fa">پاسخ چشم (E)</h4>
-                    <ul>
-                        <li><strong>4:</strong> <span class="en">Spontaneously opens eyes</span><span class="fa">چشم‌ها به صورت خودبه‌خودی باز می‌شوند</span></li>
-                        <li><strong>3:</strong> <span class="en">Opens eyes to voice</span><span class="fa">چشم‌ها به صدا باز می‌شوند</span></li>
-                        <li><strong>2:</strong> <span class="en">Opens eyes to pain</span><span class="fa">چشم‌ها به درد باز می‌شوند</span></li>
-                        <li><strong>1:</strong> <span class="en">No eye opening</span><span class="fa">چشم‌ها باز نمی‌شوند</span></li>
-                    </ul>
+        <!-- Dashboard Page -->
+        <div id="home-page" class="page active">
+            <div class="dashboard-header">
+                <h2 class="en">Hospital GCS Monitoring System</h2>
+                <h2 class="fa">سیستم پایش GCS بیمارستان</h2>
+            </div>
+            
+            <div class="stats-cards">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-user-injured"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 class="en">Total Patients</h3>
+                        <h3 class="fa">کل بیماران</h3>
+                        <div class="stat-value" id="total-patients">0</div>
+                    </div>
                 </div>
                 
-                <div class="component-info">
-                    <h4 class="en">Verbal Response (V)</h4>
-                    <h4 class="fa">پاسخ کلامی (V)</h4>
-                    <ul>
-                        <li><strong>5:</strong> <span class="en">Oriented, converses normally</span><span class="fa">با آگاهی کامل، مکالمه طبیعی</span></li>
-                        <li><strong>4:</strong> <span class="en">Confused, disoriented</span><span class="fa">گیج، بدون آگاهی</span></li>
-                        <li><strong>3:</strong> <span class="en">Inappropriate words</span><span class="fa">کلمات نامناسب</span></li>
-                        <li><strong>2:</strong> <span class="en">Incomprehensible sounds</span><span class="fa">صداهای نامفهوم</span></li>
-                        <li><strong>1:</strong> <span class="en">No verbal response</span><span class="fa">بدون پاسخ کلامی</span></li>
-                    </ul>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 class="en">Today's Assessments</h3>
+                        <h3 class="fa">ارزیابی های امروز</h3>
+                        <div class="stat-value" id="today-assessments">0</div>
+                    </div>
                 </div>
                 
-                <div class="component-info">
-                    <h4 class="en">Motor Response (M)</h4>
-                    <h4 class="fa">پاسخ حرکتی (M)</h4>
-                    <ul>
-                        <li><strong>6:</strong> <span class="en">Obeys commands</span><span class="fa">از دستورات اطاعت می‌کند</span></li>
-                        <li><strong>5:</strong> <span class="en">Localizes pain</span><span class="fa">درد را موضعی می‌کند</span></li>
-                        <li><strong>4:</strong> <span class="en">Withdraws from pain</span><span class="fa">از درد دوری می‌کند</span></li>
-                        <li><strong>3:</strong> <span class="en">Abnormal flexion</span><span class="fa">خم شدن غیر طبیعی</span></li>
-                        <li><strong>2:</strong> <span class="en">Extension to pain</span><span class="fa">باز شدن در پاسخ به درد</span></li>
-                        <li><strong>1:</strong> <span class="en">No motor response</span><span class="fa">بدون پاسخ حرکتی</span></li>
-                    </ul>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-procedures"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 class="en">Critical Patients</h3>
+                        <h3 class="fa">بیماران بحرانی</h3>
+                        <div class="stat-value" id="critical-patients">0</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="dashboard-sections">
+                <div class="quick-actions">
+                    <h3 class="en">Quick Actions</h3>
+                    <h3 class="fa">عملیات سریع</h3>
+                    <div class="action-buttons">
+                        <button id="add-patient-action" class="btn primary">
+                            <i class="fas fa-user-plus"></i>
+                            <span class="en">Add Patient</span>
+                            <span class="fa">افزودن بیمار</span>
+                        </button>
+                        <button id="new-assessment-action" class="btn primary">
+                            <i class="fas fa-clipboard-check"></i>
+                            <span class="en">New Assessment</span>
+                            <span class="fa">ارزیابی جدید</span>
+                        </button>
+                        <button id="view-reports-action" class="btn secondary">
+                            <i class="fas fa-file-medical-alt"></i>
+                            <span class="en">View Reports</span>
+                            <span class="fa">مشاهده گزارش‌ها</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="recent-patients">
+                    <h3 class="en">Recent Patients</h3>
+                    <h3 class="fa">بیماران اخیر</h3>
+                    <div class="recent-patients-list">
+                        <div class="no-data-message">
+                            <i class="fas fa-info-circle"></i>
+                            <p class="en">No recent patients found.</p>
+                            <p class="fa">هیچ بیمار اخیری یافت نشد.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        
-        <div class="guide-section">
-            <h3 class="en">GCS Score Interpretation</h3>
-            <h3 class="fa">تفسیر امتیاز GCS</h3>
-            <ul>
-                <li><strong>13-15:</strong> <span class="en">Mild brain injury</span><span class="fa">آسیب مغزی خفیف</span></li>
-                <li><strong>9-12:</strong> <span class="en">Moderate brain injury</span><span class="fa">آسیب مغزی متوسط</span></li>
-                <li><strong>≤8:</strong> <span class="en">Severe brain injury</span><span class="fa">آسیب مغزی شدید</span></li>
-            </ul>
+
+        <!-- Patients Page -->
+        <div id="patients-page" class="page">
+            <div class="page-header">
+                <h2 class="en">Patient Management</h2>
+                <h2 class="fa">مدیریت بیمار</h2>
+                <button id="add-patient-btn" class="btn primary">
+                    <i class="fas fa-plus"></i>
+                    <span class="en">Add New Patient</span>
+                    <span class="fa">افزودن بیمار جدید</span>
+                </button>
+            </div>
+            
+            <div class="patient-filters">
+                <div class="search-box">
+                    <input type="text" id="patient-search" placeholder="Search patients by name, ID...">
+                    <i class="fas fa-search"></i>
+                </div>
+                
+                <div class="filter-options">
+                    <select id="department-filter">
+                        <option value="" class="en">All Departments</option>
+                        <option value="" class="fa">همه بخش‌ها</option>
+                        <option value="emergency" class="en">Emergency</option>
+                        <option value="emergency" class="fa">اورژانس</option>
+                        <option value="neurology" class="en">Neurology</option>
+                        <option value="neurology" class="fa">نورولوژی</option>
+                        <option value="icu" class="en">ICU</option>
+                        <option value="icu" class="fa">آی سی یو</option>
+                    </select>
+                    
+                    <select id="sort-options">
+                        <option value="name" class="en">Sort by Name</option>
+                        <option value="name" class="fa">مرتب‌سازی بر اساس نام</option>
+                        <option value="id" class="en">Sort by ID</option>
+                        <option value="id" class="fa">مرتب‌سازی بر اساس شناسه</option>
+                        <option value="date" class="en">Sort by Admission Date</option>
+                        <option value="date" class="fa">مرتب‌سازی بر اساس تاریخ پذیرش</option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="patients-list" class="patients-grid">
+                <!-- Patient cards will be dynamically added here -->
+                <div class="no-patients-message">
+                    <i class="fas fa-user-injured"></i>
+                    <p class="en">No patients found. Add a new patient to get started.</p>
+                    <p class="fa">هیچ بیماری یافت نشد. برای شروع یک بیمار جدید اضافه کنید.</p>
+                    <button class="btn primary add-first-patient">
+                        <i class="fas fa-plus"></i>
+                        <span class="en">Add First Patient</span>
+                        <span class="fa">افزودن اولین بیمار</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Patient Profile Modal -->
+            <div id="patient-modal" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 id="modal-title" class="en">Add New Patient</h2>
+                        <h2 id="modal-title-fa" class="fa">افزودن بیمار جدید</h2>
+                        <span class="close">&times;</span>
+                    </div>
+                    
+                    <form id="patient-form">
+                        <input type="hidden" id="patient-id">
+                        
+                        <div class="form-section">
+                            <h3 class="en">Basic Information</h3>
+                            <h3 class="fa">اطلاعات پایه</h3>
+                            
+                            <div class="form-group">
+                                <label class="en" for="patient-name">Full Name <span class="required">*</span></label>
+                                <label class="fa" for="patient-name">نام و نام خانوادگی <span class="required">*</span></label>
+                                <input type="text" id="patient-name" required>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="en" for="patient-id-number">Patient ID <span class="required">*</span></label>
+                                    <label class="fa" for="patient-id-number">شماره پرونده <span class="required">*</span></label>
+                                    <input type="text" id="patient-id-number" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="en" for="patient-age">Age <span class="required">*</span></label>
+                                    <label class="fa" for="patient-age">سن <span class="required">*</span></label>
+                                    <input type="number" id="patient-age" min="0" max="120" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="en" for="patient-gender">Gender</label>
+                                    <label class="fa" for="patient-gender">جنسیت</label>
+                                    <select id="patient-gender">
+                                        <option value="male" class="en">Male</option>
+                                        <option value="male" class="fa">مرد</option>
+                                        <option value="female" class="en">Female</option>
+                                        <option value="female" class="fa">زن</option>
+                                        <option value="other" class="en">Other</option>
+                                        <option value="other" class="fa">سایر</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-section">
+                            <h3 class="en">Medical Information</h3>
+                            <h3 class="fa">اطلاعات پزشکی</h3>
+                            
+                            <div class="form-group">
+                                <label class="en" for="patient-department">Department <span class="required">*</span></label>
+                                <label class="fa" for="patient-department">بخش <span class="required">*</span></label>
+                                <select id="patient-department" required>
+                                    <option value="emergency" class="en">Emergency</option>
+                                    <option value="emergency" class="fa">اورژانس</option>
+                                    <option value="neurology" class="en">Neurology</option>
+                                    <option value="neurology" class="fa">نورولوژی</option>
+                                    <option value="icu" class="en">ICU</option>
+                                    <option value="icu" class="fa">آی سی یو</option>
+                                    <option value="other" class="en">Other</option>
+                                    <option value="other" class="fa">سایر</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="en" for="bed-number">Bed No.</label>
+                                    <label class="fa" for="bed-number">شماره تخت</label>
+                                    <input type="text" id="bed-number">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="en" for="admission-date">Admission Date <span class="required">*</span></label>
+                                    <label class="fa" for="admission-date">تاریخ پذیرش <span class="required">*</span></label>
+                                    <input type="date" id="admission-date" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="en" for="patient-diagnosis">Diagnosis</label>
+                                <label class="fa" for="patient-diagnosis">تشخیص</label>
+                                <input type="text" id="patient-diagnosis">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="en" for="patient-history">Medical History</label>
+                                <label class="fa" for="patient-history">سابقه پزشکی</label>
+                                <textarea id="patient-history" rows="3"></textarea>
+                            </div>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="submit" class="btn primary">
+                                <i class="fas fa-save"></i>
+                                <span class="en">Save Patient</span>
+                                <span class="fa">ذخیره بیمار</span>
+                            </button>
+                            <button type="button" class="btn secondary" id="cancel-patient">
+                                <i class="fas fa-times"></i>
+                                <span class="en">Cancel</span>
+                                <span class="fa">لغو</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Patient View Modal -->
+            <div id="patient-view-modal" class="modal">
+                <div class="modal-content large">
+                    <div class="modal-header">
+                        <h2 id="patient-view-name" class="en">Patient Profile</h2>
+                        <span class="close">&times;</span>
+                    </div>
+                    
+                    <div class="patient-profile">
+                        <div class="profile-header">
+                            <div class="patient-avatar">
+                                <i class="fas fa-user-injured"></i>
+                            </div>
+                            <div class="patient-info">
+                                <h3 id="profile-name">Patient Name</h3>
+                                <div class="patient-tags">
+                                    <span id="profile-id-tag" class="tag">ID: 12345</span>
+                                    <span id="profile-age-tag" class="tag">45y</span>
+                                    <span id="profile-gender-tag" class="tag">Male</span>
+                                    <span id="profile-department-tag" class="tag department">Neurology</span>
+                                </div>
+                                <div class="patient-meta">
+                                    <div class="meta-item">
+                                        <i class="fas fa-calendar-check"></i>
+                                        <span class="en">Admitted:</span>
+                                        <span class="fa">تاریخ پذیرش:</span>
+                                        <span id="profile-admission-date">May 5, 2025</span>
+                                    </div>
+                                    <div class="meta-item">
+                                        <i class="fas fa-bed"></i>
+                                        <span class="en">Bed:</span>
+                                        <span class="fa">تخت:</span>
+                                        <span id="profile-bed">ICU-12</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="profile-actions">
+                                <button id="edit-patient-btn" class="btn secondary">
+                                    <i class="fas fa-edit"></i>
+                                    <span class="en">Edit</span>
+                                    <span class="fa">ویرایش</span>
+                                </button>
+                                <button id="new-gcs-btn" class="btn primary">
+                                    <i class="fas fa-calculator"></i>
+                                    <span class="en">New GCS</span>
+                                    <span class="fa">GCS جدید</span>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="profile-tabs">
+                            <button class="tab-btn active" data-tab="profile-overview">
+                                <i class="fas fa-user"></i>
+                                <span class="en">Overview</span>
+                                <span class="fa">بررسی اجمالی</span>
+                            </button>
+                            <button class="tab-btn" data-tab="profile-gcs">
+                                <i class="fas fa-chart-line"></i>
+                                <span class="en">GCS History</span>
+                                <span class="fa">تاریخچه GCS</span>
+                            </button>
+                            <button class="tab-btn" data-tab="profile-notes">
+                                <i class="fas fa-clipboard"></i>
+                                <span class="en">Notes</span>
+                                <span class="fa">یادداشت‌ها</span>
+                            </button>
+                        </div>
+                        
+                        <div id="profile-overview" class="profile-tab-content active">
+                            <div class="profile-section">
+                                <h4 class="en">Medical Information</h4>
+                                <h4 class="fa">اطلاعات پزشکی</h4>
+                                <div class="info-group">
+                                    <div class="info-label en">Diagnosis:</div>
+                                    <div class="info-label fa">تشخیص:</div>
+                                    <div id="profile-diagnosis" class="info-value">Traumatic brain injury</div>
+                                </div>
+                                <div class="info-group">
+                                    <div class="info-label en">Medical History:</div>
+                                    <div class="info-label fa">سابقه پزشکی:</div>
+                                    <div id="profile-history" class="info-value">Motor vehicle accident with head trauma</div>
+                                </div>
+                            </div>
+                            
+                            <div class="profile-section">
+                                <h4 class="en">Latest GCS Score</h4>
+                                <h4 class="fa">آخرین امتیاز GCS</h4>
+                                <div id="latest-gcs-score">
+                                    <div class="no-data-message small">
+                                        <i class="fas fa-info-circle"></i>
+                                        <p class="en">No GCS assessments found for this patient.</p>
+                                        <p class="fa">هیچ ارزیابی GCS برای این بیمار یافت نشد.</p>
+                                    </div>
+                                    
+                                    <div class="latest-gcs-details" style="display: none;">
+                                        <div class="gcs-score-summary">
+                                            <div class="total-score">
+                                                <span id="latest-total-score">12</span>
+                                                <div class="component-scores">
+                                                    <span>E:<span id="latest-eye-score">3</span></span>
+                                                    <span>V:<span id="latest-verbal-score">4</span></span>
+                                                    <span>M:<span id="latest-motor-score">5</span></span>
+                                                </div>
+                                            </div>
+                                            <div class="score-interpretation">
+                                                <div id="latest-interpretation" class="moderate">Moderate brain injury</div>
+                                                <div id="latest-score-date" class="score-date">May 6, 2025 - 14:30</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="profile-gcs" class="profile-tab-content">
+                            <div class="gcs-history-chart">
+                                <canvas id="patient-gcs-chart"></canvas>
+                            </div>
+                            
+                            <div class="gcs-table">
+                                <h4 class="en">GCS Assessment History</h4>
+                                <h4 class="fa">تاریخچه ارزیابی GCS</h4>
+                                <div class="table-container">
+                                    <table id="gcs-history-table">
+                                        <thead>
+                                            <tr>
+                                                <th class="en">Date/Time</th>
+                                                <th class="fa">تاریخ و زمان</th>
+                                                <th>E</th>
+                                                <th>V</th>
+                                                <th>M</th>
+                                                <th class="en">Total</th>
+                                                <th class="fa">کل</th>
+                                                <th class="en">Assessed By</th>
+                                                <th class="fa">ارزیابی شده توسط</th>
+                                                <th class="en">Actions</th>
+                                                <th class="fa">عملیات</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- GCS history entries will be added here dynamically -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="no-data-message gcs-history">
+                                    <i class="fas fa-info-circle"></i>
+                                    <p class="en">No GCS assessments found for this patient.</p>
+                                    <p class="fa">هیچ ارزیابی GCS برای این بیمار یافت نشد.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="profile-notes" class="profile-tab-content">
+                            <div class="notes-container">
+                                <div class="notes-header">
+                                    <h4 class="en">Clinical Notes</h4>
+                                    <h4 class="fa">یادداشت‌های بالینی</h4>
+                                    <button id="add-note-btn" class="btn small primary">
+                                        <i class="fas fa-plus"></i>
+                                        <span class="en">Add Note</span>
+                                        <span class="fa">افزودن یادداشت</span>
+                                    </button>
+                                </div>
+                                
+                                <div class="notes-list">
+                                    <!-- Notes will be added here dynamically -->
+                                </div>
+                                
+                                <div class="no-data-message notes">
+                                    <i class="fas fa-clipboard"></i>
+                                    <p class="en">No clinical notes found for this patient.</p>
+                                    <p class="fa">هیچ یادداشت بالینی برای این بیمار یافت نشد.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+
+        <!-- GCS Calculator Page -->
+        <div id="calculator-page" class="page">
+            <div class="page-header">
+                <h2 class="en">GCS Calculator</h2>
+                <h2 class="fa">محاسبه GCS</h2>
+            </div>
+            
+            <div class="patient-selector">
+                <label class="en" for="selected-patient">Select Patient:</label>
+                <label class="fa" for="selected-patient">انتخاب بیمار:</label>
+                <select id="selected-patient">
+                    <option value="" class="en">-- Select a Patient --</option>
+                    <option value="" class="fa">-- انتخاب بیمار --</option>
+                </select>
+                <div class="patient-quick-info" id="selected-patient-info">
+                    <!-- Patient quick info will appear here when selected -->
+                </div>
+            </div>
+
+            <div id="calculator-content">
+                <div class="gcs-calculator">
+                    <!-- Eye Response Section -->
+                    <div class="gcs-section">
+                        <div class="section-header">
+                            <h3 class="en">Eye Response (E)</h3>
+                            <h3 class="fa">پاسخ چشمی (E)</h3>
+                            <button class="help-btn" data-help="eye">
+                                <i class="fas fa-question-circle"></i>
+                                <span class="en">Help</span>
+                                <span class="fa">راهنما</span>
+                            </button>
+                        </div>
+                        <div class="gcs-options">
+                            <div class="gcs-option" data-score="4" data-component="eye">
+                                <img src="images/eye4.jpg" alt="Eyes open spontaneously">
+                                <div class="option-caption">
+                                    <span class="score">2</span>
+                                    <span class="en">Incomprehensible sounds</span>
+                                    <span class="fa">صداهای نامفهوم</span>
+                                </div>
+                            </div>
+                            <div class="gcs-option" data-score="1" data-component="verbal">
+                                <img src="images/verbal1.jpg" alt="No verbal response">
+                                <div class="option-caption">
+                                    <span class="score">1</span>
+                                    <span class="en">No verbal response</span>
+                                    <span class="fa">بدون پاسخ کلامی</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Motor Response Section -->
+                    <div class="gcs-section">
+                        <div class="section-header">
+                            <h3 class="en">Motor Response (M)</h3>
+                            <h3 class="fa">پاسخ حرکتی (M)</h3>
+                            <button class="help-btn" data-help="motor">
+                                <i class="fas fa-question-circle"></i>
+                                <span class="en">Help</span>
+                                <span class="fa">راهنما</span>
+                            </button>
+                        </div>
+                        <div class="gcs-options">
+                            <div class="gcs-option" data-score="6" data-component="motor">
+                                <img src="images/motor6.jpg" alt="Obeys commands">
+                                <div class="option-caption">
+                                    <span class="score">6</span>
+                                    <span class="en">Obeys commands</span>
+                                    <span class="fa">از دستورات اطاعت می‌کند</span>
+                                </div>
+                            </div>
+                            <div class="gcs-option" data-score="5" data-component="motor">
+                                <img src="images/motor5.jpg" alt="Localizes pain">
+                                <div class="option-caption">
+                                    <span class="score">5</span>
+                                    <span class="en">Localizes pain</span>
+                                    <span class="fa">درد را موضعی می‌کند</span>
+                                </div>
+                            </div>
+                            <div class="gcs-option" data-score="4" data-component="motor">
+                                <img src="images/motor4.jpg" alt="Withdraws from pain">
+                                <div class="option-caption">
+                                    <span class="score">4</span>
+                                    <span class="en">Withdraws from pain</span>
+                                    <span class="fa">از درد دوری می‌کند</span>
+                                </div>
+                            </div>
+                            <div class="gcs-option" data-score="3" data-component="motor">
+                                <img src="images/motor3.jpg" alt="Abnormal flexion">
+                                <div class="option-caption">
+                                    <span class="score">3</span>
+                                    <span class="en">Abnormal flexion</span>
+                                    <span class="fa">خم شدن غیر طبیعی</span>
+                                </div>
+                            </div>
+                            <div class="gcs-option" data-score="2" data-component="motor">
+                                <img src="images/motor2.jpg" alt="Extension to pain">
+                                <div class="option-caption">
+                                    <span class="score">2</span>
+                                    <span class="en">Extension to pain</span>
+                                    <span class="fa">باز شدن در پاسخ به درد</span>
+                                </div>
+                            </div>
+                            <div class="gcs-option" data-score="1" data-component="motor">
+                                <img src="images/motor1.jpg" alt="No motor response">
+                                <div class="option-caption">
+                                    <span class="score">1</span>
+                                    <span class="en">No motor response</span>
+                                    <span class="fa">بدون پاسخ حرکتی</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Notes Section -->
+                    <div class="gcs-section notes-section">
+                        <h3 class="en">Assessment Notes</h3>
+                        <h3 class="fa">یادداشت‌های ارزیابی</h3>
+                        <textarea id="gcs-notes" rows="3" placeholder="Enter any clinical observations or notes about this assessment..."></textarea>
+                    </div>
+
+                    <!-- GCS Results -->
+                    <div class="gcs-results">
+                        <h3 class="en">GCS Score</h3>
+                        <h3 class="fa">امتیاز GCS</h3>
+                        <div class="score-display">
+                            <div class="total-score">
+                                <span id="total-score">--</span>
+                                <span class="en">points</span>
+                                <span class="fa">امتیاز</span>
+                            </div>
+                            <div class="component-scores">
+                                <span class="en">E: </span><span class="fa">E: </span><span id="eye-score">-</span>
+                                <span class="en">V: </span><span class="fa">V: </span><span id="verbal-score">-</span>
+                                <span class="en">M: </span><span class="fa">M: </span><span id="motor-score">-</span>
+                            </div>
+                            <div class="interpretation">
+                                <span class="en">Interpretation: </span>
+                                <span class="fa">تفسیر: </span>
+                                <span id="score-interpretation">--</span>
+                            </div>
+                        </div>
+                        <div class="score-actions">
+                            <button id="save-gcs-btn" class="btn primary" disabled>
+                                <i class="fas fa-save"></i>
+                                <span class="en">Save Assessment</span>
+                                <span class="fa">ذخیره ارزیابی</span>
+                            </button>
+                            <button id="reset-gcs-btn" class="btn secondary">
+                                <i class="fas fa-undo"></i>
+                                <span class="en">Reset</span>
+                                <span class="fa">بازنشانی</span>
+                            </button>
+                            <button id="back-to-patient-btn" class="btn tertiary">
+                                <i class="fas fa-arrow-left"></i>
+                                <span class="en">Back to Patient</span>
+                                <span class="fa">بازگشت به بیمار</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Help Modal -->
+            <div id="help-modal" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 id="help-title" class="en">GCS Assessment Help</h2>
+                        <h2 id="help-title-fa" class="fa">راهنمای ارزیابی GCS</h2>
+                        <span class="close">&times;</span>
+                    </div>
+                    
+                    <div class="help-content">
+                        <div id="eye-help" class="help-section">
+                            <img src="images/eyehelp.jpg" alt="Eye assessment guide" class="help-image">
+                            <div class="help-text">
+                                <h3 class="en">Eye Response Assessment Guide</h3>
+                                <h3 class="fa">راهنمای ارزیابی پاسخ چشمی</h3>
+                                <ul>
+                                    <li><strong>4 - Spontaneous:</strong> <span class="en">Eyes open without stimulation</span><span class="fa">چشم‌ها بدون تحریک باز می‌شوند</span></li>
+                                    <li><strong>3 - To Voice:</strong> <span class="en">Eyes open in response to verbal command</span><span class="fa">چشم‌ها در پاسخ به دستور کلامی باز می‌شوند</span></li>
+                                    <li><strong>2 - To Pain:</strong> <span class="en">Eyes open only with painful stimuli</span><span class="fa">چشم‌ها فقط با تحریک دردناک باز می‌شوند</span></li>
+                                    <li><strong>1 - None:</strong> <span class="en">No eye opening, even to painful stimuli</span><span class="fa">چشم‌ها حتی با تحریک دردناک باز نمی‌شوند</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div id="verbal-help" class="help-section">
+                            <img src="images/verbalhelp.jpg" alt="Verbal assessment guide" class="help-image">
+                            <div class="help-text">
+                                <h3 class="en">Verbal Response Assessment Guide</h3>
+                                <h3 class="fa">راهنمای ارزیابی پاسخ کلامی</h3>
+                                <ul>
+                                    <li><strong>5 - Oriented:</strong> <span class="en">Knows person, place, time, and reason for hospitalization</span><span class="fa">شخص، مکان، زمان و دلیل بستری شدن را می‌داند</span></li>
+                                    <li><strong>4 - Confused:</strong> <span class="en">Disoriented but can engage in conversation</span><span class="fa">گیج است اما می‌تواند در مکالمه شرکت کند</span></li>
+                                    <li><strong>3 - Inappropriate:</strong> <span class="en">Random or disjointed words, no sustained conversation</span><span class="fa">کلمات تصادفی یا نامرتبط، بدون مکالمه پایدار</span></li>
+                                    <li><strong>2 - Incomprehensible:</strong> <span class="en">Moans or groans, no recognizable words</span><span class="fa">ناله یا غرغر، بدون کلمات قابل تشخیص</span></li>
+                                    <li><strong>1 - None:</strong> <span class="en">No verbal response, even to painful stimuli</span><span class="fa">بدون پاسخ کلامی، حتی به محرک‌های دردناک</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div id="motor-help" class="help-section">
+                            <img src="images/motorhelp.jpg" alt="Motor assessment guide" class="help-image">
+                            <div class="help-text">
+                                <h3 class="en">Motor Response Assessment Guide</h3>
+                                <h3 class="fa">راهنمای ارزیابی پاسخ حرکتی</h3>
+                                <ul>
+                                    <li><strong>6 - Obeys Commands:</strong> <span class="en">Follows simple instructions correctly</span><span class="fa">دستورات ساده را به درستی دنبال می‌کند</span></li>
+                                    <li><strong>5 - Localizes Pain:</strong> <span class="en">Moves limb to source of pain</span><span class="fa">اندام را به سمت منبع درد حرکت می‌دهد</span></li>
+                                    <li><strong>4 - Withdraws from Pain:</strong> <span class="en">Pulls limb away from painful stimulus</span><span class="fa">اندام را از محرک دردناک دور می‌کند</span></li>
+                                    <li><strong>3 - Abnormal Flexion:</strong> <span class="en">Decorticate posturing (arms flex, legs extend)</span><span class="fa">حالت دکورتیکه (خم شدن بازوها، دراز شدن پاها)</span></li>
+                                    <li><strong>2 - Extension:</strong> <span class="en">Decerebrate posturing (arms and legs extend)</span><span class="fa">حالت دسربره (دراز شدن بازوها و پاها)</span></li>
+                                    <li><strong>1 - None:</strong> <span class="en">No motor response to pain</span><span class="fa">بدون پاسخ حرکتی به درد</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="modal-footer">
+                        <button id="close-help-btn" class="btn secondary">
+                            <span class="en">Close</span>
+                            <span class="fa">بستن</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Reports Page -->
+        <div id="history-page" class="page">
+            <div class="page-header">
+                <h2 class="en">Patient Reports</h2>
+                <h2 class="fa">گزارش‌های بیمار</h2>
+            </div>
+            
+            <div class="report-filters">
+                <div class="search-box">
+                    <input type="text" id="report-search" placeholder="Search patients by name, ID...">
+                    <i class="fas fa-search"></i>
+                </div>
+                
+                <div class="filter-options">
+                    <select id="department-report-filter">
+                        <option value="" class="en">All Departments</option>
+                        <option value="" class="fa">همه بخش‌ها</option>
+                        <option value="emergency" class="en">Emergency</option>
+                        <option value="emergency" class="fa">اورژانس</option>
+                        <option value="neurology" class="en">Neurology</option>
+                        <option value="neurology" class="fa">نورولوژی</option>
+                        <option value="icu" class="en">ICU</option>
+                        <option value="icu" class="fa">آی سی یو</option>
+                    </select>
+                    
+                    <div class="date-range">
+                        <label class="en">Date Range:</label>
+                        <label class="fa">بازه زمانی:</label>
+                        <input type="date" id="date-from">
+                        <span class="en">to</span>
+                        <span class="fa">تا</span>
+                        <input type="date" id="date-to">
+                    </div>
+                    
+                    <button id="generate-report-btn" class="btn primary">
+                        <i class="fas fa-file-medical"></i>
+                        <span class="en">Generate Report</span>
+                        <span class="fa">ایجاد گزارش</span>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="patient-summary">
+                    <i class="fas fa-user-injured"></i>
+                    <span class="en">Patient Summary</span>
+                    <span class="fa">خلاصه بیمار</span>
+                </button>
+                <button class="tab-btn" data-tab="gcs-trends">
+                    <i class="fas fa-chart-line"></i>
+                    <span class="en">GCS Trends</span>
+                    <span class="fa">روند GCS</span>
+                </button>
+                <button class="tab-btn" data-tab="department-stats">
+                    <i class="fas fa-hospital"></i>
+                    <span class="en">Department Stats</span>
+                    <span class="fa">آمار بخش</span>
+                </button>
+            </div>
+            
+            <div id="patient-summary" class="tab-content active">
+                <div class="table-container">
+                    <table id="patient-summary-table">
+                        <thead>
+                            <tr>
+                                <th class="en">Patient ID</th>
+                                <th class="fa">شناسه بیمار</th>
+                                <th class="en">Name</th>
+                                <th class="fa">نام</th>
+                                <th class="en">Department</th>
+                                <th class="fa">بخش</th>
+                                <th class="en">Latest GCS</th>
+                                <th class="fa">آخرین GCS</th>
+                                <th class="en">Status</th>
+                                <th class="fa">وضعیت</th>
+                                <th class="en">Actions</th>
+                                <th class="fa">عملیات</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Patient summary data will be added here dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="no-data-message">
+                    <i class="fas fa-info-circle"></i>
+                    <p class="en">No patients match your filter criteria.</p>
+                    <p class="fa">هیچ بیماری با معیارهای فیلتر شما مطابقت ندارد.</p>
+                </div>
+            </div>
+            
+            <div id="gcs-trends" class="tab-content">
+                <div class="chart-container large">
+                    <canvas id="overall-gcs-chart"></canvas>
+                </div>
+                
+                <div class="trends-summary">
+                    <div class="trend-card">
+                        <h3 class="en">Average GCS</h3>
+                        <h3 class="fa">میانگین GCS</h3>
+                        <div class="trend-value" id="average-gcs">10.5</div>
+                    </div>
+                    
+                    <div class="trend-card">
+                        <h3 class="en">Improving</h3>
+                        <h3 class="fa">در حال بهبود</h3>
+                        <div class="trend-value" id="improving-count">8</div>
+                    </div>
+                    
+                    <div class="trend-card">
+                        <h3 class="en">Stable</h3>
+                        <h3 class="fa">پایدار</h3>
+                        <div class="trend-value" id="stable-count">12</div>
+                    </div>
+                    
+                    <div class="trend-card">
+                        <h3 class="en">Declining</h3>
+                        <h3 class="fa">در حال افت</h3>
+                        <div class="trend-value" id="declining-count">3</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="department-stats" class="tab-content">
+                <div class="stats-grid">
+                    <div class="stats-card">
+                        <h3 class="en">Emergency Department</h3>
+                        <h3 class="fa">بخش اورژانس</h3>
+                        <div class="chart-container small">
+                            <canvas id="emergency-chart"></canvas>
+                        </div>
+                        <div class="stats-summary">
+                            <div class="stat-item">
+                                <span class="en">Patients:</span>
+                                <span class="fa">بیماران:</span>
+                                <span id="emergency-patients">15</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="en">Avg. GCS:</span>
+                                <span class="fa">میانگین GCS:</span>
+                                <span id="emergency-avg">11.2</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="stats-card">
+                        <h3 class="en">Neurology Department</h3>
+                        <h3 class="fa">بخش نورولوژی</h3>
+                        <div class="chart-container small">
+                            <canvas id="neurology-chart"></canvas>
+                        </div>
+                        <div class="stats-summary">
+                            <div class="stat-item">
+                                <span class="en">Patients:</span>
+                                <span class="fa">بیماران:</span>
+                                <span id="neurology-patients">8</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="en">Avg. GCS:</span>
+                                <span class="fa">میانگین GCS:</span>
+                                <span id="neurology-avg">9.5</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="stats-card">
+                        <h3 class="en">ICU</h3>
+                        <h3 class="fa">آی سی یو</h3>
+                        <div class="chart-container small">
+                            <canvas id="icu-chart"></canvas>
+                        </div>
+                        <div class="stats-summary">
+                            <div class="stat-item">
+                                <span class="en">Patients:</span>
+                                <span class="fa">بیماران:</span>
+                                <span id="icu-patients">12</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="en">Avg. GCS:</span>
+                                <span class="fa">میانگین GCS:</span>
+                                <span id="icu-avg">7.8</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Guide/Help Page -->
+        <div id="guide-page" class="page">
+            <div class="page-header">
+                <h2 class="en">GCS Assessment Guide</h2>
+                <h2 class="fa">راهنمای ارزیابی GCS</h2>
+            </div>
+            
+            <div class="guide-content">
+                <div class="guide-section">
+                    <h3 class="en">What is the Glasgow Coma Scale?</h3>
+                    <h3 class="fa">مقیاس کمای گلاسکو چیست؟</h3>
+                    <p class="en">The Glasgow Coma Scale (GCS) is a neurological scale that aims to provide a reliable and objective way of recording the state of a person's consciousness. It was created in 1974 by Graham Teasdale and Bryan Jennett, professors of neurosurgery at the University of Glasgow.</p>
+                    <p class="fa">مقیاس کمای گلاسکو (GCS) یک مقیاس عصبی است که هدف آن ارائه روشی قابل اعتماد و عینی برای ثبت وضعیت هوشیاری یک فرد است. این مقیاس در سال 1974 توسط گراهام تیزدل و برایان جنت، استادان جراحی مغز و اعصاب در دانشگاه گلاسکو ایجاد شد.</p>
+                </div>
+                
+                <div class="guide-section">
+                    <h3 class="en">GCS Components</h3>
+                    <h3 class="fa">اجزای GCS</h3>
+                    <div class="components-container">
+                        <div class="component-card">
+                            <div class="component-header">
+                                <i class="fas fa-eye"></i>
+                                <h4 class="en">Eye Response (E)</h4>
+                                <h4 class="fa">پاسخ چشمی (E)</h4>
+                            </div>
+                            <img src="images/eyehelp.jpg" alt="Eye response guide" class="component-image">
+                            <ul class="component-list">
+                                <li><strong>4:</strong> <span class="en">Spontaneously opens eyes</span><span class="fa">چشم‌ها به صورت خودبه‌خودی باز می‌شوند</span></li>
+                                <li><strong>3:</strong> <span class="en">Opens eyes to voice</span><span class="fa">چشم‌ها به صدا باز می‌شوند</span></li>
+                                <li><strong>2:</strong> <span class="en">Opens eyes to pain</span><span class="fa">چشم‌ها به درد باز می‌شوند</span></li>
+                                <li><strong>1:</strong> <span class="en">No eye opening</span><span class="fa">چشم‌ها باز نمی‌شوند</span></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="component-card">
+                            <div class="component-header">
+                                <i class="fas fa-comment"></i>
+                                <h4 class="en">Verbal Response (V)</h4>
+                                <h4 class="fa">پاسخ کلامی (V)</h4>
+                            </div>
+                            <img src="images/verbalhelp.jpg" alt="Verbal response guide" class="component-image">
+                            <ul class="component-list">
+                                <li><strong>5:</strong> <span class="en">Oriented, converses normally</span><span class="fa">با آگاهی کامل، مکالمه طبیعی</span></li>
+                                <li><strong>4:</strong> <span class="en">Confused, disoriented</span><span class="fa">گیج، بدون آگاهی</span></li>
+                                <li><strong>3:</strong> <span class="en">Inappropriate words</span><span class="fa">کلمات نامناسب</span></li>
+                                <li><strong>2:</strong> <span class="en">Incomprehensible sounds</span><span class="fa">صداهای نامفهوم</span></li>
+                                <li><strong>1:</strong> <span class="en">No verbal response</span><span class="fa">بدون پاسخ کلامی</span></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="component-card">
+                            <div class="component-header">
+                                <i class="fas fa-hand-paper"></i>
+                                <h4 class="en">Motor Response (M)</h4>
+                                <h4 class="fa">پاسخ حرکتی (M)</h4>
+                            </div>
+                            <img src="images/motorhelp.jpg" alt="Motor response guide" class="component-image">
+                            <ul class="component-list">
+                                <li><strong>6:</strong> <span class="en">Obeys commands</span><span class="fa">از دستورات اطاعت می‌کند</span></li>
+                                <li><strong>5:</strong> <span class="en">Localizes pain</span><span class="fa">درد را موضعی می‌کند</span></li>
+                                <li><strong>4:</strong> <span class="en">Withdraws from pain</span><span class="fa">از درد دوری می‌کند</span></li>
+                                <li><strong>3:</strong> <span class="en">Abnormal flexion</span><span class="fa">خم شدن غیر طبیعی</span></li>
+                                <li><strong>2:</strong> <span class="en">Extension to pain</span><span class="fa">باز شدن در پاسخ به درد</span></li>
+                                <li><strong>1:</strong> <span class="en">No motor response</span><span class="fa">بدون پاسخ حرکتی</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="guide-section">
+                    <h3 class="en">GCS Score Interpretation</h3>
+                    <h3 class="fa">تفسیر امتیاز GCS</h3>
+                    <div class="interpretation-table">
+                        <div class="table-header">
+                            <div class="table-cell">
+                                <span class="en">Score Range</span>
+                                <span class="fa">محدوده امتیاز</span>
+                            </div>
+                            <div class="table-cell">
+                                <span class="en">Severity</span>
+                                <span class="fa">شدت</span>
+                            </div>
+                            <div class="table-cell">
+                                <span class="en">Clinical Significance</span>
+                                <span class="fa">اهمیت بالینی</span>
+                            </div>
+                        </div>
+                        <div class="table-row severe">
+                            <div class="table-cell">3-8</div>
+                            <div class="table-cell">
+                                <span class="en">Severe</span>
+                                <span class="fa">شدید</span>
+                            </div>
+                            <div class="table-cell">
+                                <span class="en">Coma, severe brain injury, poor prognosis</span>
+                                <span class="fa">کما، آسیب مغزی شدید، پیش‌آگهی ضعیف</span>
+                            </div>
+                        </div>
+                        <div class="table-row moderate">
+                            <div class="table-cell">9-12</div>
+                            <div class="table-cell">
+                                <span class="en">Moderate</span>
+                                <span class="fa">متوسط</span>
+                            </div>
+                            <div class="table-cell">
+                                <span class="en">Moderate brain injury, close monitoring required</span>
+                                <span class="fa">آسیب مغزی متوسط، نیاز به نظارت دقیق</span>
+                            </div>
+                        </div>
+                        <div class="table-row mild">
+                            <div class="table-cell">13-15</div>
+                            <div class="table-cell">
+                                <span class="en">Mild</span>
+                                <span class="fa">خفیف</span>
+                            </div>
+                            <div class="table-cell">
+                                <span class="en">Mild brain injury, generally good prognosis</span>
+                                <span class="fa">آسیب مغزی خفیف، پیش‌آگهی عموماً خوب</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="guide-section">
+                    <h3 class="en">Using the GCS Calculator</h3>
+                    <h3 class="fa">استفاده از محاسبه‌گر GCS</h3>
+                    <div class="step-by-step">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h4 class="en">Select a Patient</h4>
+                                <h4 class="fa">یک بیمار را انتخاب کنید</h4>
+                                <p class="en">Choose a patient from the dropdown menu at the top of the calculator page.</p>
+                                <p class="fa">یک بیمار را از منوی کشویی در بالای صفحه محاسبه‌گر انتخاب کنید.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h4 class="en">Assess Eye Response</h4>
+                                <h4 class="fa">پاسخ چشمی را ارزیابی کنید</h4>
+                                <p class="en">Click on the image that best matches the patient's eye response. Use the Help button if you need guidance.</p>
+                                <p class="fa">روی تصویری که بهترین تطابق را با پاسخ چشمی بیمار دارد کلیک کنید. در صورت نیاز به راهنمایی، از دکمه راهنما استفاده کنید.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h4 class="en">Assess Verbal Response</h4>
+                                <h4 class="fa">پاسخ کلامی را ارزیابی کنید</h4>
+                                <p class="en">Select the image that best represents the patient's verbal response level.</p>
+                                <p class="fa">تصویری را که بهترین نشان‌دهنده سطح پاسخ کلامی بیمار است، انتخاب کنید.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h4 class="en">Assess Motor Response</h4>
+                                <h4 class="fa">پاسخ حرکتی را ارزیابی کنید</h4>
+                                <p class="en">Choose the image that accurately depicts the patient's motor response capability.</p>
+                                <p class="fa">تصویری را که به دقت توانایی پاسخ حرکتی بیمار را نشان می‌دهد، انتخاب کنید.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-number">5</div>
+                            <div class="step-content">
+                                <h4 class="en">Review and Save</h4>
+                                <h4 class="fa">بررسی و ذخیره</h4>
+                                <p class="en">Check the calculated GCS score, add any relevant notes, and click "Save Assessment" to record it in the patient's profile.</p>
+                                <p class="fa">امتیاز GCS محاسبه‌شده را بررسی کنید، هرگونه یادداشت مربوطه را اضافه کنید و برای ثبت در پروفایل بیمار، روی «ذخیره ارزیابی» کلیک کنید.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="guide-section">
+                    <h3 class="en">Clinical Recommendations</h3>
+                    <h3 class="fa">توصیه‌های بالینی</h3>
+                    <div class="recommendations">
+                        <div class="recommendation-card severe">
+                            <div class="recommendation-header">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                <h4 class="en">Severe Injury (GCS 3-8)</h4>
+                                <h4 class="fa">آسیب شدید (GCS 3-8)</h4>
+                            </div>
+                            <ul>
+                                <li class="en">Immediate neurological consultation</li>
+                                <li class="fa">مشاوره فوری عصبی</li>
+                                <li class="en">Consider intubation and mechanical ventilation</li>
+                                <li class="fa">لوله‌گذاری و تهویه مکانیکی را در نظر بگیرید</li>
+                                <li class="en">ICU admission</li>
+                                <li class="fa">پذیرش در ICU</li>
+                                <li class="en">CT scan to assess brain injury</li>
+                                <li class="fa">اسکن CT برای ارزیابی آسیب مغزی</li>
+                                <li class="en">ICP monitoring may be indicated</li>
+                                <li class="fa">نظارت ICP ممکن است نشان داده شود</li>
+                                <li class="en">Frequent GCS assessments (every 1-2 hours)</li>
+                                <li class="fa">ارزیابی‌های مکرر GCS (هر 1-2 ساعت)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="recommendation-card moderate">
+                            <div class="recommendation-header">
+                                <i class="fas fa-exclamation-circle"></i>
+                                <h4 class="en">Moderate Injury (GCS 9-12)</h4>
+                                <h4 class="fa">آسیب متوسط (GCS 9-12)</h4>
+                            </div>
+                            <ul>
+                                <li class="en">Neurological consultation</li>
+                                <li class="fa">مشاوره عصبی</li>
+                                <li class="en">Admission to supervised unit</li>
+                                <li class="fa">پذیرش در واحد تحت نظارت</li>
+                                <li class="en">Regular GCS assessments (every 2-4 hours)</li>
+                                <li class="fa">ارزیابی‌های منظم GCS (هر 2-4 ساعت)</li>
+                                <li class="en">CT scan to rule out intracranial pathology</li>
+                                <li class="fa">اسکن CT برای رد کردن پاتولوژی داخل جمجمه‌ای</li>
+                                <li class="en">Monitor for deterioration</li>
+                                <li class="fa">نظارت بر وخامت</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="recommendation-card mild">
+                            <div class="recommendation-header">
+                                <i class="fas fa-info-circle"></i>
+                                <h4 class="en">Mild Injury (GCS 13-15)</h4>
+                                <h4 class="fa">آسیب خفیف (GCS 13-15)</h4>
+                            </div>
+                            <ul>
+                                <li class="en">Consider neurological consultation</li>
+                                <li class="fa">مشاوره عصبی را در نظر بگیرید</li>
+                                <li class="en">GCS assessments every 4-6 hours</li>
+                                <li class="fa">ارزیابی‌های GCS هر 4-6 ساعت</li>
+                                <li class="en">Consider CT scan based on clinical presentation</li>
+                                <li class="fa">بر اساس ارائه بالینی، اسکن CT را در نظر بگیرید</li>
+                                <li class="en">May consider discharge with proper follow-up</li>
+                                <li class="fa">ممکن است ترخیص با پیگیری مناسب را در نظر بگیرید</li>
+                                <li class="en">Provide head injury instructions to patient/family</li>
+                                <li class="fa">دستورالعمل‌های آسیب سر را به بیمار/خانواده ارائه دهید</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-hospital-user"></i>
+                    <span>Hospital GCS Electronic Report</span>
+                </div>
+                <div class="footer-links">
+                    <a href="#" class="en">About</a>
+                    <a href="#" class="fa">درباره ما</a>
+                    <a href="#" class="en">Privacy Policy</a>
+                    <a href="#" class="fa">سیاست حفظ حریم خصوصی</a>
+                    <a href="#" class="en">Terms of Use</a>
+                    <a href="#" class="fa">شرایط استفاده</a>
+                    <a href="#" class="en">Contact</a>
+                    <a href="#" class="fa">تماس با ما</a>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>© 2025 Hospital GCS Electronic Report. All rights reserved.</p>
+            </div>
+        </footer>
     </div>
-</div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>-caption">
+                                    <span class="score">4</span>
+                                    <span class="en">Eyes open spontaneously</span>
+                                    <span class="fa">چشم‌ها به صورت خودبه‌خودی باز هستند</span>
+                                </div>
+                            </div>
+                            <div class="gcs-option" data-score="3" data-component="eye">
+                                <img src="images/eye3.jpg" alt="Eyes open to verbal command">
+                                <div class="option-caption">
+                                    <span class="score">3</span>
+                                    <span class="en">Eyes open to verbal command</span>
+                                    <span class="fa">چشم‌ها با دستور کلامی باز می‌شوند</span>
+                                </div>
+                            </div>
+                            <div class="gcs-option" data-score="2" data-component="eye">
+                                <img src="images/eye2.jpg" alt="Eyes open to pain">
+                                <div class="option-caption">
+                                    <span class="score">2</span>
+                                    <span class="en">Eyes open to pain</span>
+                                    <span class="fa">چشم‌ها در پاسخ به درد باز می‌شوند</span>
+                                </div>
+                            </div>
+                            <div class="gcs-option" data-score="1" data-component="eye">
+                                <img src="images/eye1.jpg" alt="No eye opening">
+                                <div class="option-caption">
+                                    <span class="score">1</span>
+                                    <span class="en">No eye opening</span>
+                                    <span class="fa">چشم‌ها باز نمی‌شوند</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Verbal Response Section -->
+                    <div class="gcs-section">
+                        <div class="section-header">
+                            <h3 class="en">Verbal Response (V)</h3>
+                            <h3 class="fa">پاسخ کلامی (V)</h3>
+                            <button class="help-btn" data-help="verbal">
+                                <i class="fas fa-question-circle"></i>
+                                <span class="en">Help</span>
+                                <span class="fa">راهنما</span>
+                            </button>
+                        </div>
+                        <div class="gcs-options">
+                            <div class="gcs-option" data-score="5" data-component="verbal">
+                                <img src="images/verbal5.jpg" alt="Oriented, converses normally">
+                                <div class="option-caption">
+                                    <span class="score">5</span>
+                                    <span class="en">Oriented, converses normally</span>
+                                    <span class="fa">با آگاهی کامل، مکالمه طبیعی</span>
+                                </div>
+                            </div>
+                            <div class="gcs-option" data-score="4" data-component="verbal">
+                                <img src="images/verbal4.jpg" alt="Confused, disoriented">
+                                <div class="option-caption">
+                                    <span class="score">4</span>
+                                    <span class="en">Confused, disoriented</span>
+                                    <span class="fa">گیج، بدون آگاهی</span>
+                                </div>
+                            </div>
+                            <div class="gcs-option" data-score="3" data-component="verbal">
+                                <img src="images/verbal3.jpg" alt="Inappropriate words">
+                                <div class="option-caption">
+                                    <span class="score">3</span>
+                                    <span class="en">Inappropriate words</span>
+                                    <span class="fa">کلمات نامناسب</span>
+                                </div>
+                            </div>
+                            <div class="gcs-option" data-score="2" data-component="verbal">
+                                <img src="images/verbal2.jpg" alt="Incomprehensible sounds">
+                                <div class="option
