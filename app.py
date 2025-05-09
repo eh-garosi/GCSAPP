@@ -50,7 +50,15 @@ init_db()
 @app.route('/', defaults={'path': 'index.html'})
 @app.route('/<path:path>')
 def serve_static(path):
-    return send_from_directory(app.static_folder, path)
+    if os.path.exists(os.path.join('static', path)):
+        return send_from_directory('static', path)
+    else:
+        return send_from_directory('static', 'index.html')
+
+# Add this new route to serve images from the images directory
+@app.route('/images/<path:filename>')
+def serve_images(filename):
+    return send_from_directory('images', filename)
 
 # API endpoint to get all patients
 @app.route('/api/patients', methods=['GET'])
@@ -204,4 +212,11 @@ def get_gcs_trends(patient_id):
     return jsonify(scores)
 
 if __name__ == '__main__':
+    # Check for image directory and files
+    if os.path.exists('images'):
+        image_count = len([f for f in os.listdir('images') if f.endswith(('.jpg', '.png'))])
+        print(f"Found {image_count} image files in the 'images' directory.")
+    else:
+        print("WARNING: 'images' directory not found! Please create this directory and add your GCS images.")
+    
     app.run(debug=True, host='0.0.0.0', port=5000)
